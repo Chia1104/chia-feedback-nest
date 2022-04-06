@@ -3,9 +3,8 @@ import { AppService } from './app.service';
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
-import { ReposController } from './repos/controllers/repos.controller';
-import { UsersController } from './users/controllers/users.controller';
-import { FeedbacksController } from './feedbacks/controllers/feedbacks.controller';
+import { ReposModule } from './repos/repos.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -13,13 +12,10 @@ import { FeedbacksController } from './feedbacks/controllers/feedbacks.controlle
     MongooseModule.forRoot(process.env.MONGODB_CONNECTION_URI, {
       dbName: process.env.MONGODB_DATABASE,
     }),
+    ReposModule,
+    UsersModule,
   ],
-  controllers: [
-    AppController,
-    ReposController,
-    UsersController,
-    FeedbacksController,
-  ],
+  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}
