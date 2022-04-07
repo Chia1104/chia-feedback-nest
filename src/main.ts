@@ -8,6 +8,8 @@ async function bootstrap() {
     .setTitle("Chia's Feedback")
     .setDescription("Chia's feedback REST API")
     .setVersion('1.0')
+    .addTag('Repos')
+    .addTag('Auth')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api/documentation', app, document);

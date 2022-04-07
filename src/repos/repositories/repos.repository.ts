@@ -14,6 +14,8 @@ export class ReposRepository {
   }
 
   async findOne(_id: string): Promise<Repos> {
+    if (!_id.match(/^[0-9a-fA-F]{24}$/))
+      throw new NotFoundException('Repos not found');
     const repos = await this.reposModel.findById(_id).exec();
     if (!repos) throw new NotFoundException('Repos not found');
     return repos;
@@ -25,6 +27,8 @@ export class ReposRepository {
   }
 
   async update(_id: string, repos: Repos): Promise<Repos> {
+    if (!_id.match(/^[0-9a-fA-F]{24}$/))
+      throw new NotFoundException('Repos not found');
     const updatedRepos = await this.reposModel
       .findByIdAndUpdate(_id, repos, { new: true })
       .exec();
@@ -33,6 +37,8 @@ export class ReposRepository {
   }
 
   async delete(_id: string): Promise<Repos> {
+    if (!_id.match(/^[0-9a-fA-F]{24}$/))
+      throw new NotFoundException('Repos not found');
     const deletedRepos = await this.reposModel.findByIdAndRemove(_id).exec();
     if (!deletedRepos) throw new NotFoundException('Repos not found');
     return deletedRepos;
