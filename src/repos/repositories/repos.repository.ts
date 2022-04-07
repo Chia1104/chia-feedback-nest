@@ -13,8 +13,8 @@ export class ReposRepository {
     return await this.reposModel.find().exec();
   }
 
-  async findOne(id: number): Promise<Repos> {
-    const repos = await this.reposModel.findById(id).exec();
+  async findOne(_id: string): Promise<Repos> {
+    const repos = await this.reposModel.findById(_id).exec();
     if (!repos) throw new NotFoundException('Repos not found');
     return repos;
   }
@@ -24,16 +24,16 @@ export class ReposRepository {
     return await newRepos.save();
   }
 
-  async update(id: number, repos: Repos): Promise<Repos> {
+  async update(_id: string, repos: Repos): Promise<Repos> {
     const updatedRepos = await this.reposModel
-      .findByIdAndUpdate(id, repos, { new: true })
+      .findByIdAndUpdate(_id, repos, { new: true })
       .exec();
     if (!updatedRepos) throw new NotFoundException('Repos not found');
     return updatedRepos;
   }
 
-  async delete(id: number): Promise<Repos> {
-    const deletedRepos = await this.reposModel.findByIdAndRemove(id).exec();
+  async delete(_id: string): Promise<Repos> {
+    const deletedRepos = await this.reposModel.findByIdAndRemove(_id).exec();
     if (!deletedRepos) throw new NotFoundException('Repos not found');
     return deletedRepos;
   }

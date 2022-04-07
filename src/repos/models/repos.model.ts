@@ -12,7 +12,7 @@ export const ReposSchema = new mongoose.Schema({
     id: { type: Number, required: true },
     node_id: { type: String, required: true },
     avatar_url: { type: String, required: true },
-    gravatar_id: { type: String, required: true },
+    gravatar_id: { type: String, required: false },
     url: { type: String, required: true },
     html_url: { type: String, required: true },
     followers_url: { type: String, required: true },
@@ -35,7 +35,7 @@ export const ReposSchema = new mongoose.Schema({
   keys_url: { type: String, required: true },
   collaborators_url: { type: String, required: true },
   teams_url: { type: String, required: true },
-  books_url: { type: String, required: true },
+  hooks_url: { type: String, required: true },
   issue_events_url: { type: String, required: true },
   events_url: { type: String, required: true },
   assignees_url: { type: String, required: true },
@@ -139,7 +139,7 @@ export interface Repos extends mongoose.Document {
   keys_url: string;
   collaborators_url: string;
   teams_url: string;
-  books_url: string;
+  hooks_url: string;
   issue_events_url: string;
   events_url: string;
   assignees_url: string;
