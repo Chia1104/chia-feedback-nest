@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ReposController } from './controllers';
 import { ReposService } from './services';
-import { ReposSchema } from './models';
+import { ReposSchema } from './schemas';
 import { ReposRepository } from './repositories';
 
 @Module({

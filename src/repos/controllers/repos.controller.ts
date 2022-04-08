@@ -13,7 +13,9 @@ import {
   ApiResponse,
   ApiTags,
   ApiBearerAuth,
+  ApiBody,
 } from '@nestjs/swagger';
+import { ReposDTO } from '../dtos';
 
 @ApiTags('Repos')
 @Controller('api/repos')
@@ -40,8 +42,9 @@ export class ReposController {
   @ApiBearerAuth()
   @ApiOperation({ summary: 'Create new repo' })
   @ApiResponse({ status: 403, description: 'Forbidden.' })
-  async createRepo(@Body() body: any) {
-    return await this.reposService.create(body);
+  @ApiBody({ type: [ReposDTO] })
+  async createRepo(@Body() reposDTO: ReposDTO) {
+    return await this.reposService.create(reposDTO);
   }
 
   @Patch(':id')
@@ -49,8 +52,9 @@ export class ReposController {
   @ApiOperation({ summary: 'Update repo by id(_id)' })
   @ApiResponse({ status: 403, description: 'Forbidden.' })
   @ApiResponse({ status: 404, description: 'Not Found.' })
-  async updateRepo(@Param('id') _id: string, @Body() body: any) {
-    return await this.reposService.update(_id, body);
+  @ApiBody({ type: [ReposDTO] })
+  async updateRepo(@Param('id') _id: string, @Body() reposDTO: ReposDTO) {
+    return await this.reposService.update(_id, reposDTO);
   }
 
   @Delete(':id')
