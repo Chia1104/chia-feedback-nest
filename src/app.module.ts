@@ -5,6 +5,8 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
 import { ReposModule } from './repos/repos.module';
 import { UsersModule } from './users/users.module';
+import { TodoController } from './todo/todo.controller';
+import { ImagesModule } from './images/images.module';
 
 @Module({
   imports: [
@@ -14,8 +16,9 @@ import { UsersModule } from './users/users.module';
     }),
     ReposModule,
     UsersModule,
+    ImagesModule,
   ],
-  controllers: [AppController],
+  controllers: [AppController, TodoController],
   providers: [AppService],
 })
 export class AppModule {}
