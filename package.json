@@ -1,5 +1,5 @@
 {
-  "name": "chia-feedback-nest",
+  "name": "chia-web-nest",
   "version": "0.0.1",
   "description": "",
   "author": "",
@@ -27,7 +27,10 @@
     "@nestjs/mongoose": "^9.0.3",
     "@nestjs/platform-express": "^8.0.0",
     "@nestjs/swagger": "^5.2.1",
+    "@types/multer-gridfs-storage": "^4.0.5",
+    "mongo-gridfs": "^1.1.0",
     "mongoose": "^6.2.10",
+    "multer-gridfs-storage": "^5.0.2",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0",
